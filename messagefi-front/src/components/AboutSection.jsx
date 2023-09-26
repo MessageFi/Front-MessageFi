@@ -23,11 +23,8 @@ export function AboutSection(props) {
           !isExpanded && 'lg:line-clamp-4',
         )}
       >
-        In this show, Eric and Wes dig deep to get to the facts with guests who
-        have been labeled villains by a society quick to judge, without actually
-        getting the full story. Tune in every Thursday to get to the truth with
-        another misunderstood outcast as they share the missing context in their
-        tragic tale.
+        Current bonus pool: 1000000 MFCs
+        Competition Rules: All MFT will devide bonus by the proportion of popularity when timer down. Support your favourite MFT and get rich reawards, the most popular MFT will get the largest bonus!
       </p>
       {!isExpanded && (
         <button

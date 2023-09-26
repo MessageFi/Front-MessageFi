@@ -1,3 +1,4 @@
+"use client";
 import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,6 +9,7 @@ import { AudioPlayer } from '@/components/player/AudioPlayer'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 import { Waveform } from '@/components/Waveform'
 import posterImage from '@/images/poster.png'
+import CountdownTimer from '../../components/CountdownTimer';
 
 function SpotifyIcon(props) {
   return (
@@ -58,7 +60,9 @@ function PersonIcon(props) {
 }
 
 export default function MainLayout({ children }) {
-  let hosts = ['Eric Gordon', 'Wes Mantooth']
+  let hosts = ['MessageFi', 'Round #1']
+
+  const initialTargetDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
   return (
     <AudioProvider>
@@ -94,16 +98,15 @@ export default function MainLayout({ children }) {
             <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 sm:rounded-xl lg:rounded-2xl" />
           </Link>
           <div className="mt-10 text-center lg:mt-12 lg:text-left">
-            <p className="text-xl font-bold text-slate-900">
-              <Link href="/">Their Side</Link>
+            <p className="flex items-center justify-center text-xl font-bold text-slate-900">
+              <Link href="/">Countdown to voting Round #1</Link>
             </p>
-            <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-              Conversations with the most tragically misunderstood people of our
-              time.
-            </p>
+            <div className="flex items-center justify-center mt-4">
+              <CountdownTimer initialTargetDate={initialTargetDate} />
+            </div>
           </div>
           <AboutSection className="mt-12 hidden lg:block" />
-          <section className="mt-10 lg:mt-12">
+          {/* <section className="mt-10 lg:mt-12">
             <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only">
               <TinyWaveFormIcon
                 colors={['fill-indigo-300', 'fill-blue-300']}
@@ -134,7 +137,7 @@ export default function MainLayout({ children }) {
                 </li>
               ))}
             </ul>
-          </section>
+          </section> */}
         </div>
       </header>
       <main className="border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">

@@ -27,6 +27,14 @@ export async function generateMetadata({ params }) {
   }
 }
 
+const BackIcon = (props) => {
+  return (
+    <svg viewBox="0 0 24 24" {...props}>
+      <path d="M18 12H6M10 6l-4 6l4 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default async function Episode({ params }) {
   let episode = await getEpisode(params.episode)
   let date = new Date(episode.published)
@@ -36,16 +44,6 @@ export default async function Episode({ params }) {
       <Container>
         <header className="flex flex-col">
           <div className="flex items-center gap-6">
-            <EpisodePlayButton
-              episode={episode}
-              className="group relative flex h-18 w-18 flex-shrink-0 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-900 focus:outline-none focus:ring focus:ring-slate-700 focus:ring-offset-4"
-              playing={
-                <PauseIcon className="h-9 w-9 fill-white group-active:fill-white/80" />
-              }
-              paused={
-                <PlayIcon className="h-9 w-9 fill-white group-active:fill-white/80" />
-              }
-            />
             <div className="flex flex-col">
               <h1 className="mt-2 text-4xl font-bold text-slate-900">
                 {episode.title}
@@ -56,7 +54,7 @@ export default async function Episode({ params }) {
               />
             </div>
           </div>
-          <p className="ml-24 mt-3 text-lg font-medium leading-8 text-slate-700">
+          <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
             {episode.description}
           </p>
         </header>

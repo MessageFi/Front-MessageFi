@@ -3,7 +3,7 @@ export function getAllEpisodes() {
     {
       id: 1,
       title: "1: An Introduction to Solana",
-      published: new Date('2023-01-15T10:00:00Z'),
+      published: new Date('2023-09-26T10:00:00Z'),
       description: "In this episode, we dive deep into Solana, a high-performance blockchain platform.",
       content: `
         <h2>What is Solana?</h2>
@@ -26,11 +26,13 @@ export function getAllEpisodes() {
         src: "https://example.com/episode1.mp3",
         type: "audio/mpeg",
       },
+      articleHeat: 5897,
+      coinDonation: 312,
     },
     {
       id: 2,
       title: "2: Understanding Hacker Houses",
-      published: new Date('2023-04-01T10:00:00Z'),
+      published: new Date('2023-09-25T10:00:00Z'),
       description: "In this episode, we delve into the concept of Hacker Houses and their significance in the tech community.",
       content: `
         <h2>What is a Hacker House?</h2>
@@ -50,11 +52,13 @@ export function getAllEpisodes() {
         src: "https://example.com/episode4.mp3",
         type: "audio/mpeg",
       },
+      articleHeat: 3456,
+      coinDonation: 278,
     },
     {
       id: 3,
       title: "3: Dive into Hackathons",
-      published: new Date('2023-05-01T10:00:00Z'),
+      published: new Date('2023-09-24T10:00:00Z'),
       description: "This episode offers insights into the exciting world of hackathons and their role in fostering innovation.",
       content: `
         <h2>What is a Hackathon?</h2>
@@ -74,6 +78,8 @@ export function getAllEpisodes() {
         src: "https://example.com/episode5.mp3",
         type: "audio/mpeg",
       },
+      articleHeat: 2319,
+      coinDonation: 188,
     }
   ];
 }

@@ -1,9 +1,13 @@
+"use client";
+import { useState } from 'react';
+
 import Link from 'next/link'
 
 import { Container } from '@/components/Container'
 import { EpisodePlayButton } from '@/components/EpisodePlayButton'
 import { FormattedDate } from '@/components/FormattedDate'
 import { getAllEpisodes } from '@/lib/episodes'
+import { ThumbUpIcon } from '@heroicons/react/solid';
 
 function PauseIcon(props) {
   return (
@@ -28,27 +32,46 @@ function PlayIcon(props) {
 function EpisodeEntry({ episode }) {
   let date = new Date(episode.published)
 
+  const [coinCount, setCoinCount] = useState(episode.coinDonation || 0);
+
+  const handleCoinClick = () => {
+    setCoinCount(prevCount => prevCount + 1);
+  }
+
   return (
     <article
       aria-labelledby={`episode-${episode.id}-title`}
-      className="py-10 sm:py-12"
+      className="py-10 sm:py-12 relative"
     >
       <Container>
-        <div className="flex flex-col items-start">
+        <div className="flex items-center justify-between">
+          {/* Title */}
           <h2
             id={`episode-${episode.id}-title`}
-            className="mt-2 text-lg font-bold text-slate-900"
+            className="mt-2 text-lg font-bold text-slate-900 flex-grow"
           >
             <Link href={`/${episode.id}`}>{episode.title}</Link>
           </h2>
-          <FormattedDate
-            date={date}
-            className="order-first font-mono text-sm leading-7 text-slate-500"
-          />
-          <p className="mt-1 text-base leading-7 text-slate-700">
-            {episode.description}
-          </p>
-          <div className="mt-4 flex items-center gap-4">
+
+          {/* Heat Indicator */}
+          <div className="flex items-center p-2 rounded-md ml-4">
+            <span className="mr-2">🔥</span>
+            <span>{episode.articleHeat}</span>
+          </div>
+        </div>
+
+        <FormattedDate
+          date={date}
+          className="order-first font-mono text-sm leading-7 text-slate-500"
+        />
+
+        <p className="mt-1 text-base leading-7 text-slate-700">
+          {episode.description}
+        </p>
+
+        <div className="mt-4 flex items-center gap-4 justify-between">
+          {/* Play button and show notes */}
+          <div className="flex items-center gap-4">
             <EpisodePlayButton
               episode={episode}
               className="flex items-center gap-x-3 text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
@@ -78,6 +101,17 @@ function EpisodeEntry({ episode }) {
             >
               Show notes
             </Link>
+          </div>
+
+          {/* Coin Donation Indicator */}
+          <div className="relative ml-4">
+            <button
+              className="flex items-center bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-md shadow-md"
+              onClick={handleCoinClick}
+            >
+              <ThumbUpIcon className="h-5 w-5 mr-2" />
+              {coinCount}
+            </button>
           </div>
         </div>
       </Container>

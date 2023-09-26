@@ -85,9 +85,16 @@ export default async function Home() {
   return (
     <div className="pb-12 pt-16 sm:pb-4 lg:pt-12">
       <Container>
-        <h1 className="text-2xl font-bold leading-7 text-slate-900">
-          Rounde #1
-        </h1>
+        <div className='flex flex-row justify-between items-center'>
+          <h1 className="text-2xl font-bold leading-7 text-slate-900">
+            Rounde #1
+          </h1>
+          <div>
+            <button className="bg-pink-500 hover:bg-pink-600 text-white p-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out">
+              New Message
+            </button>
+          </div>
+        </div>
       </Container>
       <div className="divide-y divide-slate-100 sm:mt-4 lg:mt-8 lg:border-t lg:border-slate-100">
         {episodes.map((episode) => (
